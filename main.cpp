@@ -15,6 +15,7 @@ int main(){
     queue<paciente>urgencia;
     queue<paciente>poucoUrgente;
     queue<paciente>naoUrgente;
+    int hora, min, esperah, esperam;
 
     paciente aux;
     char tipoAtendimento;
@@ -26,10 +27,10 @@ int main(){
             chegada(aux, emergencia, urgencia, poucoUrgente, naoUrgente);
         }
         else if(tipoAtendimento=='A'){
-            // Adicionar lógica para atender
+            atendimento(hora,min, esperah,esperam ,emergencia, urgencia, poucoUrgente, naoUrgente);
         }
         else if(tipoAtendimento=='D'){
-            // Adicionar lógica para exibir filas
+
         }
-    } while(tipoAtendimento != 'Q');  // Continua até pressionar 'Q'
+    } while(tipoAtendimento != 'Q'); 
 }
