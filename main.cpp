@@ -16,6 +16,7 @@ int main(){
     queue<paciente>poucoUrgente;
     queue<paciente>naoUrgente;
     int hora, min, esperah, esperam;
+    int V=0,A=0,D=0,B=0,totalAtendido=0;
 
     paciente aux;
     char tipoAtendimento;
@@ -27,10 +28,13 @@ int main(){
             chegada(aux, emergencia, urgencia, poucoUrgente, naoUrgente);
         }
         else if(tipoAtendimento=='A'){
-            atendimento(hora,min, esperah,esperam ,emergencia, urgencia, poucoUrgente, naoUrgente);
+            atendimento(hora,min, esperah,esperam ,emergencia, urgencia, poucoUrgente, naoUrgente,V,A,D,B);
         }
         else if(tipoAtendimento=='D'){
-
+            consulta(V,A,D,B);
+        }
+        else if(tipoAtendimento=='Q'){
+            relatorioFinal(V,A,D,B,totalAtendido);
         }
     } while(tipoAtendimento != 'Q'); 
 }

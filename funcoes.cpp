@@ -60,7 +60,8 @@ void atendimento(int &hora, int &minuto, int &esperah,int &esperam,
             std::queue<paciente> &emergencia, 
             std::queue<paciente> &urgencia, 
             std::queue<paciente> &poucoUrgente, 
-            std::queue<paciente> &naoUrgente){
+            std::queue<paciente> &naoUrgente,
+            int &V,int &A, int &D, int &B){
     std::cout<<"Digite o horario do atendimento: "<< "\n";
     std::cin>>hora;
     std::cin>>minuto;
@@ -70,24 +71,36 @@ void atendimento(int &hora, int &minuto, int &esperah,int &esperam,
     }else if(!emergencia.empty()){
         calcEspera(hora,minuto,esperah, esperam,emergencia);
         emergencia.pop();
+        V++;
         std::cout<<"o paciente esperou: "<<esperah<<" horas e "<<esperam<<" minutos."<<"\n";
 
     }else if(emergencia.empty()&&!urgencia.empty()){
 
         calcEspera(hora,minuto,esperah, esperam,urgencia);
         urgencia.pop();
+        A++;
         std::cout<<"o paciente esperou: "<<esperah<<" horas e "<<esperam<<" minutos."<<"\n";
 
     }else if(emergencia.empty()&&urgencia.empty()&&!poucoUrgente.empty()){
 
         calcEspera(hora,minuto,esperah, esperam,poucoUrgente);
         poucoUrgente.pop();
+        D++;
         std::cout<<"o paciente esperou: "<<esperah<<" horas e "<<esperam<<" minutos."<<"\n";
 
     }else if(emergencia.empty()&&urgencia.empty()&&poucoUrgente.empty()&&!naoUrgente.empty()){
 
         calcEspera(hora,minuto,esperah, esperam,naoUrgente);
         naoUrgente.pop();
+        B++;
         std::cout<<"o paciente esperou: "<<esperah<<" horas e "<<esperam<<" minutos."<<"\n";
     }
+}
+void consulta(int &V, int &A, int &D, int &B){
+    std::cout<<"V:"<<V<<" A:"<<A<<" D:"<<D<<" B:"<<B<<"\n";
+}
+void relatorioFinal(int &V, int &A, int &D, int &B,int &totalAtendido){
+    totalAtendido=V+A+D+B;
+    std::cout<<"Total atendidos: "<<totalAtendido<<"\n";
+    std::cout<<"Por prioridade: V="<<V<<" A="<<A<<" D="<<D<<" B="<<B<<"\n";
 }
