@@ -30,7 +30,7 @@ int main(){
         }
         else if(tipoAtendimento=='A'){
             atendimento(hora,min, esperah,esperam ,emergencia, urgencia, poucoUrgente, naoUrgente,V,A,D,B, maxEspera);
-        }A
+        }
         else if(tipoAtendimento=='D'){
             consulta(emergencia, urgencia, poucoUrgente, naoUrgente, V, A, D, B);
         }
